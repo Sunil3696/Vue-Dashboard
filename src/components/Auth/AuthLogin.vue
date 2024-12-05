@@ -1,5 +1,6 @@
 <template>
   <div class="auth-container">
+     <!-- Main container for authentication form -->
     <div class="auth-box">
       <h1 class="auth-title">Login</h1>
       <form @submit.prevent="login">
@@ -22,7 +23,7 @@
           placeholder="Enter your password"
           required
         />
-
+ <!-- Submit button for login -->
         <button type="submit" class="auth-button">Login</button>
       </form>
       <p class="auth-footer">
@@ -35,6 +36,7 @@
       <div class="modal">
         <h2 class="modal-title">Login Failed</h2>
         <p>{{ error }}</p>
+         <!-- Close button to close the error modal -->
         <button class="modal-button" @click="closeModal">Close</button>
       </div>
     </div>
@@ -42,7 +44,8 @@
 </template>
 
 <script>
-import { loginUser } from "../../api/auth";
+import { loginUser } from "../../api/auth"; // Import login API call
+
 
 export default {
   data() {
@@ -54,16 +57,22 @@ export default {
     };
   },
   methods: {
+     // Method to handle the login process
     async login() {
       try {
+        // Attempt to login by calling the loginUser function with email and password
         const response = await loginUser({
           email: this.email,
           password: this.password,
         });
+// If login is successful, store the received token and navigate to dashboard
+
         const { token } = response.data;
         localStorage.setItem("token", token);
         this.$router.push("/dashboard");
       } catch (err) {
+ // If login fails, set the error message and show the error modal
+
         this.error = err.response?.data?.message || "Login failed";
         this.showErrorModal = true; // Show error modal on failure
       }

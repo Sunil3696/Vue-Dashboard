@@ -3,7 +3,7 @@
 
     <div class="overlay" v-if="isSidebarOpen" @click="closeSidebar"></div>
 
-
+    <!-- Hamburger Menu (only shown on mobile) to toggle the sidebar -->
     <button class="hamburger-menu" @click="toggleSidebar">
       <span></span>
       <span></span>

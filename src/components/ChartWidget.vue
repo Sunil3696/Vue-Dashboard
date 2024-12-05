@@ -16,6 +16,7 @@
   export default {
     data() {
       return {
+              // Sales data for 3 products over multiple months
         chartData: [
           {name: "Product A", data: {
             "2023-01": 100, "2023-02": 120, "2023-03": 180, "2023-04": 200,

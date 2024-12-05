@@ -2,20 +2,12 @@
   <div class="widget calculator-widget">
     <h2>🧮 Simple Calculator</h2>
     <div class="calculator-inputs">
-      <input 
-        type="number" 
-        v-model="num1" 
-        placeholder="Enter number 1" 
-        class="calculator-input" 
-      />
-      <input 
-        type="number" 
-        v-model="num2" 
-        placeholder="Enter number 2" 
-        class="calculator-input" 
-      />
+      <!-- Input fields for numbers -->
+      <input type="number" v-model="num1" placeholder="Enter number 1" class="calculator-input" />
+      <input type="number" v-model="num2" placeholder="Enter number 2" class="calculator-input" />
     </div>
     <div class="calculator-buttons">
+      <!-- Buttons for each operation -->
       <button @click="handleCalculation('add')" class="calculator-button">+</button>
       <button @click="handleCalculation('subtract')" class="calculator-button">-</button>
       <button @click="handleCalculation('multiply')" class="calculator-button">×</button>
@@ -35,8 +27,10 @@ export default {
     };
   },
   methods: {
+    // Method to handle the calculation based on the selected operation
     handleCalculation(operation) {
       let res;
+      // Switch case based on the operation passed
       switch (operation) {
         case "add":
           res = this.num1 + this.num2;
@@ -60,8 +54,10 @@ export default {
 <style scoped>
 /* General Widget Styling */
 .widget {
-  background: #f3f4f6; /* Soft gray background */
-  color: #333; /* Dark text for contrast */
+  background: #f3f4f6;
+  /* Soft gray background */
+  color: #333;
+  /* Dark text for contrast */
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -73,7 +69,8 @@ export default {
 h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: #0052cc; /* Vibrant blue for the title */
+  color: #0052cc;
+  /* Vibrant blue for the title */
 }
 
 /* Input Section */

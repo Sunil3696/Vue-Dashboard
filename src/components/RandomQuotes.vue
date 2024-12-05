@@ -1,6 +1,8 @@
 <template>
+      <!-- Widget container for the random quote -->
     <div class="widget quote-widget">
       <h2>💬 Random Quote</h2>
+          <!-- Error message display if there's an error fetching the quote -->
       <p v-if="error" class="error">{{ error }}</p>
       <blockquote v-if="quote" class="quote-block">
         <p class="quote-text">"{{ quote }}"</p>
@@ -10,6 +12,7 @@
   </template>
   
   <script>
+  // Import the fetchRandomQuote function from an API module
   import { fetchRandomQuote } from "../api/quotes";
   
   export default {
@@ -20,6 +23,7 @@
         error: null,
       };
     },
+      // Fetch the random quote as soon as the component is created
     async created() {
       try {
         const data = await fetchRandomQuote();

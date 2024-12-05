@@ -1,12 +1,17 @@
 <template>
     <div class="stocks-news">
+<!-- Title of the widget -->
+
       <h2>📊 Stock News</h2>
+<!-- Conditional rendering for errors -->
       <p v-if="error" class="error">{{ error }}</p>
+<!-- List of stock news articles -->
       <ul>
         <li v-for="(article, index) in limitedNews" :key="index" class="news-item">
           <a :href="article.url" target="_blank" class="news-title">
             {{ article.title }}
           </a>
+          <!-- Short description of the article -->
           <p class="news-description">{{ article.description }}</p>
           <span class="news-date">
             {{ new Date(article.publishedAt).toLocaleDateString() }}
@@ -17,6 +22,7 @@
   </template>
   
   <script>
+    // Importing the function to fetch stock news from an API module
   import { fetchStockNews } from "../api/stocks";
   
   export default {

@@ -2,28 +2,22 @@
   <div class="widget checklist-widget">
     <h2>✅ Checklist</h2>
     <div class="checklist-input">
-      <input
-        type="text"
-        v-model="inputValue"
-        placeholder="Add a new task..."
-        @keyup.enter="handleAddItem"
-        class="checklist-input-field"
-      />
+      <input type="text" v-model="inputValue" placeholder="Add a new task..." @keyup.enter="handleAddItem"
+        class="checklist-input-field" />
+      <!-- Button to manually add a task -->
       <button @click="handleAddItem" class="checklist-add-button">
         ➕ Add
       </button>
     </div>
+    <!-- Display the tasks in the checklist -->
     <ul class="checklist-items">
-      <li
-        v-for="(item, index) in items"
-        :key="index"
-        class="checklist-item"
-        @click="handleRemoveItem(index)"
-      >
+      <li v-for="(item, index) in items" :key="index" class="checklist-item" @click="handleRemoveItem(index)">
         <span>{{ item }}</span>
+        <!-- Button to remove task from the checklist -->
         <button class="remove-button">❌</button>
       </li>
     </ul>
+    <!-- Message shown when the checklist is empty -->
     <p v-if="!items.length" class="empty-message">
       Your checklist is empty. Start adding tasks!
     </p>
@@ -39,7 +33,9 @@ export default {
     };
   },
   methods: {
+    // Method to add a task to the checklist
     handleAddItem() {
+      // Check if the input field is not empty
       if (this.inputValue.trim() !== "") {
         this.items.push(this.inputValue);
         this.inputValue = "";
@@ -64,13 +60,13 @@ export default {
   font-family: 'Arial', sans-serif;
 }
 
-/* Title Styling */
+
 h2 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
 }
 
-/* Input Section */
+
 .checklist-input {
   display: flex;
   justify-content: center;

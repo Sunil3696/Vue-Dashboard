@@ -1,41 +1,25 @@
 <template>
+  <!-- Main container for the registration form -->
   <div class="auth-container">
     <div class="auth-box">
       <h1 class="auth-title">Register</h1>
       <form @submit.prevent="register">
         <label for="username" class="auth-label">Username</label>
-        <input
-          id="username"
-          type="text"
-          v-model="username"
-          class="auth-input"
-          placeholder="Enter your username"
-          required
-        />
+        <input id="username" type="text" v-model="username" class="auth-input" placeholder="Enter your username"
+          required />
 
         <label for="email" class="auth-label">Email</label>
-        <input
-          id="email"
-          type="email"
-          v-model="email"
-          class="auth-input"
-          placeholder="Enter your email"
-          required
-        />
+        <input id="email" type="email" v-model="email" class="auth-input" placeholder="Enter your email" required />
 
         <label for="password" class="auth-label">Password</label>
-        <input
-          id="password"
-          type="password"
-          v-model="password"
-          class="auth-input"
-          placeholder="Enter your password"
-          required
-        />
+        <input id="password" type="password" v-model="password" class="auth-input" placeholder="Enter your password"
+          required />
+        <!-- Submit button for registration -->
 
         <button type="submit" class="auth-button">Register</button>
       </form>
       <p v-if="error" class="auth-error">{{ error }}</p>
+      <!-- Footer with a link to the login page -->
       <p class="auth-footer">
         Already have an account? <router-link to="/">Login</router-link>
       </p>
@@ -58,6 +42,7 @@ export default {
   methods: {
     async register() {
       try {
+        // Input validation
         if (!this.username || !this.email || !this.password) {
           this.error = "All fields are required!";
           return;
@@ -92,6 +77,7 @@ export default {
   min-height: 100vh;
   background-color: #edf2f7;
 }
+
 .auth-box {
   background: #fff;
   padding: 2rem;
@@ -100,6 +86,7 @@ export default {
   width: 100%;
   max-width: 400px;
 }
+
 .auth-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -107,12 +94,14 @@ export default {
   text-align: center;
   margin-bottom: 1rem;
 }
+
 .auth-label {
   display: block;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
   color: #333333;
 }
+
 .auth-input {
   width: 100%;
   padding: 0.75rem;
@@ -120,6 +109,7 @@ export default {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
 .auth-button {
   width: 100%;
   padding: 0.75rem;
@@ -130,13 +120,16 @@ export default {
   cursor: pointer;
   font-size: 1rem;
 }
+
 .auth-button:hover {
   background-color: #003d99;
 }
+
 .auth-error {
   color: #ff6b6b;
   margin-top: 1rem;
 }
+
 .auth-footer {
   text-align: center;
   margin-top: 1rem;
